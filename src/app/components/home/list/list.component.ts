@@ -1,5 +1,5 @@
 import { SelectionModel } from '@angular/cdk/collections';
-import { AfterViewInit, Component, Input, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, Input, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
@@ -30,7 +30,7 @@ export class ListComponent implements OnInit, AfterViewInit, OnChanges {
   dataSource = new MatTableDataSource<TaskItens>();
   selection = new SelectionModel<TaskItens>(true, []);
 
-  constructor(public dialog: MatDialog) { }
+  constructor(public dialog: MatDialog, private cdRef: ChangeDetectorRef) { }
 
   ngOnInit(): void {
     if(!!sessionStorage['TASK_LIST']) {
@@ -67,6 +67,8 @@ export class ListComponent implements OnInit, AfterViewInit, OnChanges {
       this.dataSource.data = filtered;
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
+
+      this.cdRef.detectChanges();
     });
   }
 
@@ -115,6 +117,24 @@ export class ListComponent implements OnInit, AfterViewInit, OnChanges {
     sessionStorage.setItem('TASK_LIST', JSON.stringify(this.tasks$.getValue()));
   }
 
+  checkboxLabel(row?: TaskItens): string {
+    if (!row) {
+      return `${this.isAllSelected() ? 'select' : 'deselect'} all`;
+    }
+    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.id + 1}`;
+  }
+
+  checkItem(row: TaskItens) {
+    this.selection.toggle(row);
+    if(this.selection.isSelected(row)) {
+      row.status = 'Completed';
+    } else {
+      row.status = 'Incomplete';
+    }
+    this.tasks$.next(this.dataSource.data);
+    sessionStorage.setItem('TASK_LIST', JSON.stringify(this.tasks$.getValue()));
+  }
+
   deleteTaskDialog(row: TaskItens) {
     const dialogRef = this.dialog.open(DeleteComponent);
 
@@ -130,22 +150,8 @@ export class ListComponent implements OnInit, AfterViewInit, OnChanges {
     sessionStorage.setItem('TASK_LIST', JSON.stringify(this.tasks$.getValue()));
   }
 
-  checkItem(row: TaskItens) {
-    this.selection.toggle(row);
-    if(this.selection.isSelected(row)) {
-      row.status = 'Completed';
-    } else {
-      row.status = 'Incomplete';
-    }
-    this.tasks$.next(this.dataSource.data);
-    sessionStorage.setItem('TASK_LIST', JSON.stringify(this.tasks$.getValue()));
-  }
-
-  checkboxLabel(row?: TaskItens): string {
-    if (!row) {
-      return `${this.isAllSelected() ? 'select' : 'deselect'} all`;
-    }
-    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.id + 1}`;
+  rowCompletedStatus(status: string) {
+    return status === 'Completed';
   }
 
   getHighestID(arr: TaskItens[], prop: string, n: number): TaskItens[] {
