@@ -7,12 +7,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { BehaviorSubject, combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { DeleteComponent } from './delete/delete.component';
-
-export interface TaskItens {
-  id: number;
-  task: string;
-  status: string;
-}
+import { TaskItens } from 'src/app/interfaces/task-itens';
 
 @Component({
   selector: 'app-list',
