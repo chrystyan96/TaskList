@@ -4,8 +4,8 @@ This project was created for the inPowered AI company interview and generated wi
 
 ## Versions
 
-Angular -> 10.2.4
-Node -> 14.21.3
+- Angular -> 10.2.4
+- Node -> 14.21.3
 
 ## How to run
 
