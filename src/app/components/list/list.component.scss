@@ -1,0 +1,21 @@
+table {
+    width: 100%;
+}
+  
+td, th {
+    &[class*=" mat-column-"] { flex: none; }
+}
+
+.mat-column-select,
+.mat-column-id,
+.mat-column-options  {
+    width: 6rem;
+}
+
+.mat-column-status {
+    width: 9rem;
+}
+
+.completed {
+    background: rgba(11, 223, 117, 0.582);
+}

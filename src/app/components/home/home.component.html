@@ -1,0 +1,15 @@
+<mat-grid-list cols="2" rowHeight="100px">
+    <mat-grid-tile>
+        <mat-card>
+            <app-input (sendTask)="getTask($event)"></app-input>
+        </mat-card>
+    </mat-grid-tile>
+    <mat-grid-tile>
+        <app-filter (sendFilter)="getFilter($event)"></app-filter>
+    </mat-grid-tile>
+</mat-grid-list>
+
+<mat-grid-list cols="1" class="mt32 mr32 ml32">
+    <app-list [filterValue]="filterValue" [newTask]="newTask"></app-list>
+</mat-grid-list>
+  
