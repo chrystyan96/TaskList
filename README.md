@@ -11,8 +11,7 @@ Node -> 14.21.3
 
 1. Clone this repository
 2. Make sure that the Node version it's correct! You can use nvm to manage this
-3. run `ng build` (global Node) or `npx ng build` (if you use nvm and runs Node only in that terminal session) to build the project
-    3.1 The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+3. run `ng build` (global Node) or `npx ng build` (if you use nvm and runs Node only in that terminal session) to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 4. Then run `ng serve` (global Node) or `npx ng serve` (if you use nvm and runs Node only in that terminal session)for a dev server on `http://localhost:4200/`
 
 ## Running unit tests
