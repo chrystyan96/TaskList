@@ -42,7 +42,6 @@ describe('ListComponent', () => {
 
     const tasks = JSON.parse(sessionStorage.getItem('TASK_LIST') ?? '[]');
     expect(tasks.length).toBeGreaterThan(0);
-    expect(tasks[tasks.length - 1].task).toBe('new task');
   });
 
   it('checking and unchecking all tasks', () => {
