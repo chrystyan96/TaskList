@@ -22,4 +22,16 @@ describe('HomeComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('getFilter', () => {
+    component.getFilter('all');
+    
+    expect(component.filterValue).toBe('all');
+  });
+
+  it('getTask', () => {
+    component.getTask('new task');
+    
+    expect(component.newTask).toBe('new task');
+  });
 });

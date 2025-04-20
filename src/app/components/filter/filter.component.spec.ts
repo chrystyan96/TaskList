@@ -2,6 +2,10 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { FilterComponent } from './filter.component';
 
+const mockEvent = {
+  value: 'all'
+}
+
 describe('FilterComponent', () => {
   let component: FilterComponent;
   let fixture: ComponentFixture<FilterComponent>;
@@ -21,5 +25,13 @@ describe('FilterComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('saveFilter', () => {
+    spyOn(component.sendFilter, 'emit');
+
+    component.saveFilter(mockEvent);
+    
+    expect(component.sendFilter.emit).toHaveBeenCalledWith('all');
   });
 });
