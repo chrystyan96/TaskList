@@ -1,5 +1,5 @@
-<div class="input-div">
-  <mat-form-field class="form-field">
+<div fxLayout="row wrap" fxLayoutGap="16px" class="input-div">
+  <mat-form-field fxFlex.xs="100%" fxFlex.gt-xs="60%" class="form-field">
     <mat-label>Type here</mat-label>
     <input matInput type="text" [(ngModel)]="task">
     <button mat-button *ngIf="task" matSuffix mat-icon-button aria-label="Clear" (click)="task=''">
@@ -7,5 +7,6 @@
     </button>
   </mat-form-field>
   
-  <button mat-raised-button color="primary" (click)="addTask()"> <mat-icon>add</mat-icon> Add Task</button>
+  <button mat-raised-button color="primary" fxFlex.xs="100%" fxFlex.gt-xs="20%" mat-raised-button
+    (click)="addTask()"> <mat-icon>add</mat-icon> Add Task</button>
 </div>

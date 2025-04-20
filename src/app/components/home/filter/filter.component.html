@@ -1,8 +1,10 @@
-<mat-form-field appearance="fill">
-    <mat-label>Status</mat-label>
-    <mat-select matNativeControl [(value)]="defaultSelection" (selectionChange)="saveFilter($event)">
-        <mat-option value="all">All</mat-option>
-        <mat-option value="completed">Completed</mat-option>
-        <mat-option value="incomplete">Incomplete</mat-option>
-    </mat-select>
-</mat-form-field>
+<div fxLayout="row wrap" fxLayoutGap="16px">
+    <mat-form-field appearance="fill" fxFlex.xs="100%" fxFlex.gt-xs="20%">
+        <mat-label>Filter - Task Status</mat-label>
+        <mat-select matNativeControl [(value)]="defaultSelection" (selectionChange)="saveFilter($event)">
+            <mat-option value="all">All</mat-option>
+            <mat-option value="completed">Completed</mat-option>
+            <mat-option value="incomplete">Incomplete</mat-option>
+        </mat-select>
+    </mat-form-field>
+</div>

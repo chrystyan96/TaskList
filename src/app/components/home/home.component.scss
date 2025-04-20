@@ -1,0 +1,22 @@
+.header-grid {
+    @media (max-width: 768px) {
+        mat-grid-list {
+            grid-template-columns: 1fr !important;
+        }
+    }
+
+    mat-card {
+        padding: 16px;
+        box-shadow: none;
+        border: 1px solid #e0e0e0;
+        border-radius: 8px;
+    }
+
+    .input-card {
+        background: #f9f9f9;
+    }
+
+    .filter-card {
+        background: #f1f1f1;
+    }
+}

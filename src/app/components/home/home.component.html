@@ -1,11 +1,14 @@
-<mat-grid-list cols="2" rowHeight="100px">
+<mat-grid-list cols="2" rowHeight="200px" gutterSize="16px" class="header-grid" 
+[style.margin.px]="16" [style.marginBottom.px]="24">
     <mat-grid-tile>
-        <mat-card>
+        <mat-card class="input-card" appearance="outlined">
             <app-input (sendTask)="getTask($event)"></app-input>
         </mat-card>
     </mat-grid-tile>
     <mat-grid-tile>
-        <app-filter (sendFilter)="getFilter($event)"></app-filter>
+        <mat-card class="filter-card" appearance="outlined">
+            <app-filter (sendFilter)="getFilter($event)"></app-filter>
+          </mat-card>
     </mat-grid-tile>
 </mat-grid-list>
 

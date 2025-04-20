@@ -51,11 +51,11 @@ describe('ListComponent', () => {
       { id: 2, task: 'B', status: 'Incomplete' }
     ];
 
-    component.masterToggle(); //check all
+    component.togleAll(); //check all
     expect(component.selection.selected.length).toBe(2);
     expect(component.dataSource.data.every(t => t.status === 'Completed')).toBeTrue();
 
-    component.masterToggle(); // uncheck all
+    component.togleAll(); // uncheck all
     expect(component.selection.selected.length).toBe(0);
     expect(component.dataSource.data.every(t => t.status === 'Incomplete')).toBeTrue();
   });
